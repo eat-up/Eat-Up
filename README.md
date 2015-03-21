@@ -9,6 +9,7 @@ By noon, they are paired up with someone else who wants to eat lunch and has sim
 Once paired, they are given restaurant choices and a chat box so that they can talk about their lunch date.
 After some time has passed, users can say whether their lunch date was a success, not a success, or a no show.
 
+
 **Required User Stories:**
  * [ ] Required: User can sign in using LinkedIn
  * [ ] Required: Users can edit preferences in the settings tab even when app is closed
@@ -21,6 +22,7 @@ After some time has passed, users can say whether their lunch date was a success
  * [ ] Required: Restaurants nearby
  * [ ] Required: Chat log for the two people
  * [ ] Required: End of lunch screen: signal that lunch was a success or not
+
 
 **Nice To Have:**
  * [ ] Optional: Users can write reviews about their lunch dates
