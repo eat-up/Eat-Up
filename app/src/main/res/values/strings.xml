@@ -5,4 +5,18 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="welcome_message">Welcome to Eat Up</string>
+    <string name="title_activity_lunch_time">LunchTimeActivity</string>
+    <string name="title_activity_not_lunch_time">NotLunchTimeActivity</string>
+    <string name="title_activity_lunching">LunchingActivity</string>
+    <string name="title_activity_match">MatchActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="adjust_setting">Adjust Setting</string>
+    <string name="setting_frequency">Frequency</string>
+    <string name="setting_distance">Distance to Travel</string>
+    <string name="lunch_ready">Ready to Eat Up?</string>
+    <string name="not_lunch_message">Awesome! We will check in tomorrow to see if you would like to have lunch. In the meantime, feel free to update your profile and settings in the top left cornor</string>
+    <string name="not_lunch_button">Got it!</string>
+    <string name="lunching_message">Awesome! we will pair you within the allotted time.</string>
+    <string name="lunching_time">Time</string>
 </resources>
