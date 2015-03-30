@@ -1,6 +1,5 @@
 package com.eatup.android.eatup;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,35 +8,22 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class LunchTimeActivity extends ActionBarActivity {
-    private Button btYes;
-    private Button btNotToday;
+public class NotLunch extends ActionBarActivity {
+    private Button btCanLunch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lunch_time);
+        setContentView(R.layout.activity_not_lunch);
         initSettings();
     }
 
     private void initSettings() {
-        btYes = (Button) findViewById(R.id.btYes);
-        btNotToday = (Button) findViewById(R.id.btNotToday);
-
-        btYes.setOnClickListener(new View.OnClickListener() {
+        btCanLunch = (Button) findViewById(R.id.btCanLunch);
+        btCanLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent yes = new Intent(getApplicationContext(),LunchingActivity.class);
-                startActivity(yes);
-            }
-        });
-
-        btNotToday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent notToday = new Intent(getApplicationContext(), NotLunch.class);
-                startActivity(notToday);
-
+                finish();
             }
         });
     }
@@ -46,7 +32,7 @@ public class LunchTimeActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_lunch_time, menu);
+        getMenuInflater().inflate(R.menu.menu_not_lunch, menu);
         return true;
     }
 

@@ -46,4 +46,12 @@
         android:layout_alignRight="@+id/etFreq"
         android:layout_alignEnd="@+id/etFreq" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_setting"
+        android:id="@+id/btSaveSetting"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
