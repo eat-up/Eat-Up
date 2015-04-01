@@ -23,4 +23,8 @@ public class RestApplication extends com.activeandroid.app.Application {
     public static LinkedInClient getLIClient() {
         return (LinkedInClient) LinkedInClient.getInstance(LinkedInClient.class, RestApplication.context);
     }
+
+//    public static YelpAPI getYelpClient() {
+//        return (YelpAPI) YelpAPI.getInstance(YelpAPI.class, RestApplication.context);
+//    }
 }

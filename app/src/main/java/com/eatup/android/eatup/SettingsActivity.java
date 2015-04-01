@@ -14,7 +14,13 @@ import org.json.JSONObject;
 
 public class SettingsActivity extends ActionBarActivity {
 
-    private LinkedInClient client;
+    private LinkedInClient liClient;
+    private YelpAPI yelpClient;
+
+    private static final String CONSUMER_KEY = "3sWBijFfbUR0GqK8uJ7O4w";
+    private static final String CONSUMER_SECRET = "lMvTuK3dadn_ZxeTPgKUQBpZsDQ";
+    private static final String TOKEN = "8Nf6hP8QYr1LX4ijGQxdaExZg3BrVQzX";
+    private static final String TOKEN_SECRET = "X8h0eofBYRxkX53860LspFAS49E";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +32,22 @@ public class SettingsActivity extends ActionBarActivity {
     //Send an API request to get the timeline JSON
     //Fill the listview by creating the tweet objects from the JSON
     private void getLIResponse() {
-        client = RestApplication.getLIClient();
-        client.getLIProfile(new JsonHttpResponseHandler() {
+        yelpClient = new YelpAPI(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    yelpClient.queryAPI(yelpClient);
+                    //Your code goes here
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+        liClient = RestApplication.getLIClient();
+        liClient.getLIProfile(new JsonHttpResponseHandler() {
             //SUCCESS
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
@@ -36,6 +56,7 @@ public class SettingsActivity extends ActionBarActivity {
                 //LOAD THE MODEL DATA INTO A LIST VIEW
                 Log.d("DEBUG", json.toString());
             }
+
             //FAILURE
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
