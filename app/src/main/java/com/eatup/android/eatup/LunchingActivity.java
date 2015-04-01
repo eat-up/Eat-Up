@@ -1,22 +1,34 @@
 package com.eatup.android.eatup;
 
+import android.content.BroadcastReceiver;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class LunchingActivity extends ActionBarActivity {
     private Button btCancel;
+    private TextView tvTimeCount;
+
+    private static BroadcastReceiver tickReceiver;
+    private static final String FORMAT = "%02d:%02d:%02d";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunching);
         initSettings();
+        timeTick();
     }
+
 
     private void initSettings() {
         btCancel = (Button) findViewById(R.id.btLunchCancel);
@@ -26,6 +38,31 @@ public class LunchingActivity extends ActionBarActivity {
                 finish();
             }
         });
+        tvTimeCount = (TextView) findViewById(R.id.tvTimeCount);
+
+
+        //Set the current time at startup
+        tvTimeCount.setText(String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)));
+
+    }
+
+    private void timeTick() {
+        new CountDownTimer(16069000, 1000) { // adjust the milli seconds here
+
+            public void onTick(long millisUntilFinished) {
+
+                tvTimeCount.setText(""+String.format(FORMAT,
+                        TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
+                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+            }
+
+            public void onFinish() {
+                tvTimeCount.setText("done!");
+            }
+        }.start();
     }
 
 
@@ -49,5 +86,14 @@ public class LunchingActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        //unregister broadcast receiver.
+        if(tickReceiver!=null)
+            unregisterReceiver(tickReceiver);
     }
 }

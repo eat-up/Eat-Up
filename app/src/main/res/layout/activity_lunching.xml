@@ -21,16 +21,6 @@
         android:textSize="25sp"
         android:layout_marginTop="97dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1:10"
-        android:id="@+id/tvTimeCount"
-        android:paddingTop="10sp"
-        android:textSize="22sp"
-        android:layout_below="@+id/tvLunchTime"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,5 +29,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="59dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:id="@+id/textView6"
+        android:layout_alignLeft="@+id/tvLunchTime" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="timeCount"
+        android:id="@+id/tvTimeCount"
+        android:layout_below="@+id/tvLunchTime"
+        android:layout_alignLeft="@+id/tvLunchTime"
+        android:layout_alignStart="@+id/tvLunchTime" />
+
 
 </RelativeLayout>
