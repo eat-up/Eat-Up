@@ -6,7 +6,52 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.eatup.android.eatup.SettingsActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/adjust_setting" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/adjust_setting"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="35sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/setting_frequency"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/adjust_setting"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="117dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/setting_distance"
+        android:id="@+id/textView3"
+        android:layout_centerVertical="true"/>
+
+    <EditText
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etFreq"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignRight="@+id/adjust_setting"
+        android:layout_alignEnd="@+id/adjust_setting" />
+
+    <EditText
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edDist"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignRight="@+id/etFreq"
+        android:layout_alignEnd="@+id/etFreq" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_setting"
+        android:id="@+id/btSaveSetting"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

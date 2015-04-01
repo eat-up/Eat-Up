@@ -7,8 +7,8 @@
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -48,6 +48,30 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".LunchTimeActivity"
+            android:label="@string/title_activity_lunch_time" >
+        </activity>
+        <activity
+            android:name=".NotLunchTimeActivity"
+            android:label="@string/title_activity_not_lunch_time" >
+        </activity>
+        <activity
+            android:name=".LunchingActivity"
+            android:label="@string/title_activity_lunching" >
+        </activity>
+        <activity
+            android:name=".MatchActivity"
+            android:label="@string/title_activity_match" >
+        </activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
+        <activity
+            android:name=".NotLunch"
+            android:label="@string/title_activity_not_lunch" >
         </activity>
     </application>
 

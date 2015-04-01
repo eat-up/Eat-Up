@@ -4,22 +4,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.eatup.android.eatup.LoginActivity">
+    tools:context="com.eatup.android.eatup.NotLunchTimeActivity"
+    >
+
+    <TextView android:text="@string/not_lunch_message" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNotLunch"
+        android:textSize="20sp" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:onClick="loginToRest"
-        android:text="@string/login_label" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_message"
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
+        android:text="@string/not_lunch_button"
+        android:id="@+id/btNotLunch"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

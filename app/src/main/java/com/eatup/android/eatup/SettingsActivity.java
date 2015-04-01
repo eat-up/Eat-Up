@@ -1,10 +1,13 @@
 package com.eatup.android.eatup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -22,11 +25,26 @@ public class SettingsActivity extends ActionBarActivity {
     private static final String TOKEN = "8Nf6hP8QYr1LX4ijGQxdaExZg3BrVQzX";
     private static final String TOKEN_SECRET = "X8h0eofBYRxkX53860LspFAS49E";
 
+    private Button btSaveSetting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         getLIResponse();
+        initSettings();
+
+    }
+
+    private void initSettings() {
+        btSaveSetting = (Button) findViewById(R.id.btSaveSetting);
+        btSaveSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LunchTimeActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     //Send an API request to get the timeline JSON
@@ -86,4 +104,6 @@ public class SettingsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
