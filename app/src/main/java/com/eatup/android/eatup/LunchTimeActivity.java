@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class LunchTimeActivity extends ActionBarActivity {
@@ -18,6 +21,23 @@ public class LunchTimeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunch_time);
         initSettings();
+        locateGPS();
+    }
+
+    private void locateGPS() {
+        GPSTracker gps;
+        gps = new GPSTracker(this);
+
+
+        if(gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(getApplicationContext(),
+                    "Your location is -\nLat: " + latitude + "-\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        } else {
+            gps.showSettingsAlert();
+        }
     }
 
     private void initSettings() {
