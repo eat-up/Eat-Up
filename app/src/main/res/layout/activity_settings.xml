@@ -16,35 +16,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/setting_frequency"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/adjust_setting"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="117dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/setting_distance"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="80sp"
         android:layout_height="wrap_content"
-        android:id="@+id/etFreq"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_alignRight="@+id/adjust_setting"
-        android:layout_alignEnd="@+id/adjust_setting" />
-
-    <EditText
-        android:layout_width="80sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/edDist"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignRight="@+id/etFreq"
-        android:layout_alignEnd="@+id/etFreq" />
+        android:id="@+id/etDist"
+        android:inputType="numberDecimal"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/textView7"
+        android:layout_toStartOf="@+id/textView7"
+        android:layout_marginRight="10dp"
+        android:gravity="center|center_vertical|center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,5 +40,14 @@
         android:id="@+id/btSaveSetting"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="miles"
+        android:id="@+id/textView7"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
