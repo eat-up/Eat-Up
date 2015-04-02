@@ -7,14 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class LunchTimeActivity extends ActionBarActivity {
     private Button btYes;
     private Button btNotToday;
+    private TextView tvGPSloc;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class LunchTimeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_lunch_time);
         initSettings();
         locateGPS();
+
     }
 
     private void locateGPS() {
@@ -30,11 +33,13 @@ public class LunchTimeActivity extends ActionBarActivity {
 
 
         if(gps.canGetLocation()) {
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+
 
             Toast.makeText(getApplicationContext(),
                     "Your location is -\nLat: " + latitude + "-\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            tvGPSloc.setText(Double.toString(latitude) + "," + Double.toString(longitude));
         } else {
             gps.showSettingsAlert();
         }
@@ -43,6 +48,7 @@ public class LunchTimeActivity extends ActionBarActivity {
     private void initSettings() {
         btYes = (Button) findViewById(R.id.btYes);
         btNotToday = (Button) findViewById(R.id.btNotToday);
+        tvGPSloc = (TextView) findViewById(R.id.tvGPSloc);
 
         btYes.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.eatup.android.eatup;
 
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 
@@ -36,18 +38,24 @@ public class LunchingActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                Intent i = new Intent(getApplicationContext(), NotLunch.class);
+                startActivity(i);
             }
         });
         tvTimeCount = (TextView) findViewById(R.id.tvTimeCount);
 
-
-        //Set the current time at startup
-        tvTimeCount.setText(String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)));
-
     }
 
     private void timeTick() {
-        new CountDownTimer(16069000, 1000) { // adjust the milli seconds here
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0:00"));
+        int second = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int hour2 = cal.get(Calendar.HOUR_OF_DAY);
+
+        long millisecond = ((hour2 *60 *60) + (minute * 60) + second) * 1000;
+        long timeleft = 41400000 - millisecond;
+
+        new CountDownTimer(timeleft, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
 
@@ -59,8 +67,10 @@ public class LunchingActivity extends ActionBarActivity {
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
             }
 
-            public void onFinish() {
-                tvTimeCount.setText("done!");
+            public void onFinish()
+            {
+                Intent i = new Intent(getApplicationContext(), MatchActivity.class);
+                startActivity(i);
             }
         }.start();
     }

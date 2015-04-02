@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
 
     @Override
@@ -27,8 +30,20 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
     // i.e Display application "homepage"
     @Override
     public void onLoginSuccess() {
-        Intent i = new Intent(this, SettingsActivity.class);
-        startActivity(i);
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0:00"));
+        int second = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int hour2 = cal.get(Calendar.HOUR_OF_DAY);
+        long seconds = (hour2 *60 *60) + (minute * 60) + second;
+
+        if (41400 > seconds && seconds > 39600 ) {
+            Intent j = new Intent(this, LunchTimeActivity.class);
+            startActivity(j);
+        }
+        else {
+            Intent i = new Intent(this, NotLunchTimeActivity.class);
+            startActivity(i);
+        }
     }
 
     // OAuth authentication flow failed, handle the error

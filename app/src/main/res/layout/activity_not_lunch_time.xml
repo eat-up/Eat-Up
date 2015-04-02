@@ -12,12 +12,4 @@
         android:id="@+id/tvNotLunch"
         android:textSize="20sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_lunch_button"
-        android:id="@+id/btNotLunch"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>
