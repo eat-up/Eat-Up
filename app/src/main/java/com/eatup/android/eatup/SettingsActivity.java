@@ -50,20 +50,22 @@ public class SettingsActivity extends ActionBarActivity {
     //Send an API request to get the timeline JSON
     //Fill the listview by creating the tweet objects from the JSON
     private void getLIResponse() {
+
+
         yelpClient = new YelpAPI(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
                 try {
                     yelpClient.queryAPI(yelpClient);
-                    //Your code goes here
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-
         thread.start();
+
+
         liClient = RestApplication.getLIClient();
         liClient.getLIProfile(new JsonHttpResponseHandler() {
             //SUCCESS
