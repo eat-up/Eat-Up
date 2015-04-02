@@ -3,27 +3,17 @@ package com.eatup.android.eatup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.apache.http.Header;
-import org.json.JSONObject;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class SettingsActivity extends ActionBarActivity {
 
-    private LinkedInClient liClient;
-    private YelpAPI yelpClient;
-
-    private static final String CONSUMER_KEY = "3sWBijFfbUR0GqK8uJ7O4w";
-    private static final String CONSUMER_SECRET = "lMvTuK3dadn_ZxeTPgKUQBpZsDQ";
-    private static final String TOKEN = "8Nf6hP8QYr1LX4ijGQxdaExZg3BrVQzX";
-    private static final String TOKEN_SECRET = "X8h0eofBYRxkX53860LspFAS49E";
+    private EditText etDist;
 
     private Button btSaveSetting;
 
@@ -31,9 +21,8 @@ public class SettingsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        getLIResponse();
         initSettings();
-
+        etDist = (EditText) findViewById(R.id.etDist);
     }
 
     private void initSettings() {
@@ -41,44 +30,14 @@ public class SettingsActivity extends ActionBarActivity {
         btSaveSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), LunchTimeActivity.class);
-                startActivity(i);
-            }
-        });
-    }
-
-    //Send an API request to get the timeline JSON
-    //Fill the listview by creating the tweet objects from the JSON
-    private void getLIResponse() {
-        yelpClient = new YelpAPI(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try {
-                    yelpClient.queryAPI(yelpClient);
-                    //Your code goes here
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(!etDist.getText().toString().isEmpty()) {
+                    LoginActivity.currentProfile.setDistance(Double.parseDouble(etDist.getText().toString()));
+                    //TODO: Check to see what time it is and call LunchTime or NotLunchTime
+                    Intent i = new Intent(getApplicationContext(), LunchTimeActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please enter a distance!", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
-
-        thread.start();
-        liClient = RestApplication.getLIClient();
-        liClient.getLIProfile(new JsonHttpResponseHandler() {
-            //SUCCESS
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                //DESERIALIZE JSON
-                //CREATE MODELS
-                //LOAD THE MODEL DATA INTO A LIST VIEW
-                Log.d("DEBUG", json.toString());
-            }
-
-            //FAILURE
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("DEBUG PopulateTimeline", errorResponse.toString());
             }
         });
     }
@@ -104,6 +63,5 @@ public class SettingsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -2,15 +2,24 @@ package com.eatup.android.eatup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
+import com.eatup.android.eatup.model.Profile;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
 public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
+
+    private LinkedInClient liClient;
+    public static Profile currentProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,30 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
             Intent i = new Intent(this, NotLunchTimeActivity.class);
             startActivity(i);
         }
+
+        getLIResponse();
+
+    }
+
+    private void getLIResponse() {
+        liClient = RestApplication.getLIClient();
+        liClient.getLIProfile(new JsonHttpResponseHandler() {
+            //SUCCESS
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+                //DESERIALIZE JSON
+                //CREATE MODELS
+                //LOAD THE MODEL DATA INTO A LIST VIEW
+                currentProfile = Profile.fromJSONObject(json);
+                Log.d("DEBUG", json.toString());
+            }
+
+            //FAILURE
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.d("DEBUG PopulateTimeline", errorResponse.toString());
+            }
+        });
     }
 
     // OAuth authentication flow failed, handle the error
