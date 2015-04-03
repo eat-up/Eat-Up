@@ -9,6 +9,8 @@ import android.view.View;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.eatup.android.eatup.model.Profile;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
@@ -20,12 +22,50 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
 
     private LinkedInClient liClient;
     public static Profile currentProfile;
+    private static String sUserId;
+
+    String YOUR_APP_ID = "hL9rXd1CIDxDnKT1i3RAQUpdN7Eze6OVsaz8y9ga";
+    String YOUR_CLIENT_KEY = "K1J8q09PibKi64Z7acQNQjRJVj4HrURY3LoJNSDF";
+
+    private String userName;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //Parse.enableLocalDatastore(this);
+        Parse.initialize(this, YOUR_APP_ID, YOUR_CLIENT_KEY);
+
+//        pinningProfile();
+//        checkParseAuth();
+
     }
+
+//    private void pinningProfile() {
+//        ParseObject userProfile = new ParseObject("GameScore");
+//        userProfile.put("score", 1337);
+//        userProfile.put("playerName", "Sean Plott");
+//        userProfile.put("cheatMode", false);
+//
+//        userProfile.pinInBackground();
+//    }
+
+//    private void checkParseAuth() {
+//        ParseUser currentUser = ParseUser.getCurrentUser();
+//        if (currentUser != null) {
+//            startWithCurrentUser();
+//        } else {
+//
+//        }
+//
+//    }
+
+    // Get the userId from the cached currentUser object
+    private void startWithCurrentUser() {
+        sUserId = ParseUser.getCurrentUser().getObjectId();
+    }
+
 
 
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -45,6 +85,28 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
         int hour2 = cal.get(Calendar.HOUR_OF_DAY);
         long seconds = (hour2 *60 *60) + (minute * 60) + second;
 
+
+        getLIResponse();
+
+        // show the signup or login screen
+//        ParseUser newUser = new ParseUser();
+//        newUser.setUsername(currentProfile.getName());
+//        newUser.setPassword("1234");
+//        newUser.setEmail("kehi@gmail.com");
+//        newUser.put("profile_image","adsfasdf");
+//        newUser.put("location","1.2");
+//        newUser.signUpInBackground(new SignUpCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e == null) {
+//                    // Hooray! Let them use the app now.
+//                } else {
+//                    // Sign up didn't succeed. Look at the ParseException
+//                    // to figure out what went wrong
+//                }
+//            }
+//        });
+
         if (41400 > seconds && seconds > 39600 ) {
             Intent j = new Intent(this, LunchTimeActivity.class);
             startActivity(j);
@@ -53,8 +115,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
             Intent i = new Intent(this, NotLunchTimeActivity.class);
             startActivity(i);
         }
-
-        getLIResponse();
 
     }
 
