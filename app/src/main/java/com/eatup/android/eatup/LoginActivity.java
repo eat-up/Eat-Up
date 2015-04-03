@@ -9,6 +9,8 @@ import android.view.View;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.eatup.android.eatup.model.Profile;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
@@ -21,10 +23,17 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
     private LinkedInClient liClient;
     public static Profile currentProfile;
 
+    public static final String YOUR_APPLICATION_ID = "hL9rXd1CIDxDnKT1i3RAQUpdN7Eze6OVsaz8y9ga";
+    public static final String YOUR_CLIENT_KEY = "K1J8q09PibKi64Z7acQNQjRJVj4HrURY3LoJNSDF";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // Register your parse models
+//        Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Profile.class);
+        Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
     }
 
 
