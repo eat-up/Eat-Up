@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
+
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +24,7 @@ public class NotLunch extends ActionBarActivity {
     private TextView tvTest;
     private static BroadcastReceiver tickReceiver;
     private static final String FORMAT = "%02d:%02d:%02d";
+    ParseUser currentUser;
 
 
     @Override
@@ -38,6 +41,8 @@ public class NotLunch extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                currentUser.put("lunching","yes");
+                currentUser.saveInBackground();
                 Intent i = new Intent(getApplicationContext(), LunchingActivity.class);
                 startActivity(i);
             }

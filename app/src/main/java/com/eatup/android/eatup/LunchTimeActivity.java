@@ -3,12 +3,21 @@ package com.eatup.android.eatup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class LunchTimeActivity extends ActionBarActivity {
@@ -17,6 +26,7 @@ public class LunchTimeActivity extends ActionBarActivity {
     private TextView tvGPSloc;
     private double latitude;
     private double longitude;
+    ParseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +45,39 @@ public class LunchTimeActivity extends ActionBarActivity {
         if(gps.canGetLocation()) {
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
+            ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
+            currentUser.put("location",point);
+            ParseObject cLocation = new ParseObject("CurrentLocation");
+            cLocation.put("location",point);
+            cLocation.saveInBackground();
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+            query.whereNear("location",point);
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> parseObjects, ParseException e) {
+                    if (e==null) {
+                        Log.d("location", "successful");
+                        parseObjects.get(0);
 
+                    } else {
+                        Log.d("location", "unsuccessful");
+                    }
+                }
+            });
 
-            Toast.makeText(getApplicationContext(),
-                    "Your location is -\nLat: " + latitude + "-\nLong: " + longitude, Toast.LENGTH_LONG).show();
+//            ParseQuery<Profile> query = ParseQuery.getQuery("location");
+//            query.whereNear("location",point);
+//            query.findInBackground(new FindCallback<Profile>() {
+//                @Override
+//                public void done(List<Profile> profiles, ParseException e) {
+//                    if (e==null) {
+//                        Log.d("location", "successful");
+//                    } else {
+//                        Log.d("location", "unsuccessful");
+//                    }
+//                }
+//            });
+
             tvGPSloc.setText(Double.toString(latitude) + "," + Double.toString(longitude));
         } else {
             gps.showSettingsAlert();
@@ -49,10 +88,13 @@ public class LunchTimeActivity extends ActionBarActivity {
         btYes = (Button) findViewById(R.id.btYes);
         btNotToday = (Button) findViewById(R.id.btNotToday);
         tvGPSloc = (TextView) findViewById(R.id.tvGPSloc);
+        currentUser = ParseUser.getCurrentUser();
 
         btYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                currentUser.put("lunching","yes");
+                currentUser.saveInBackground();
                 Intent yes = new Intent(getApplicationContext(),LunchingActivity.class);
                 startActivity(yes);
             }
@@ -61,6 +103,8 @@ public class LunchTimeActivity extends ActionBarActivity {
         btNotToday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                currentUser.put("lunching","no");
+                currentUser.saveInBackground();
                 Intent notToday = new Intent(getApplicationContext(), NotLunch.class);
                 startActivity(notToday);
 

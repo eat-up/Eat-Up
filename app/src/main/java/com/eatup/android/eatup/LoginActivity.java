@@ -9,7 +9,10 @@ import android.view.View;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.eatup.android.eatup.model.Profile;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import org.apache.http.Header;
@@ -24,32 +27,28 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
     public static Profile currentProfile;
     private static String sUserId;
 
-    String YOUR_APP_ID = "hL9rXd1CIDxDnKT1i3RAQUpdN7Eze6OVsaz8y9ga";
-    String YOUR_CLIENT_KEY = "K1J8q09PibKi64Z7acQNQjRJVj4HrURY3LoJNSDF";
 
     private String userName;
     private String email;
+
+    public static final String YOUR_APPLICATION_ID = "hL9rXd1CIDxDnKT1i3RAQUpdN7Eze6OVsaz8y9ga";
+    public static final String YOUR_CLIENT_KEY = "K1J8q09PibKi64Z7acQNQjRJVj4HrURY3LoJNSDF";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Parse.enableLocalDatastore(this);
-        Parse.initialize(this, YOUR_APP_ID, YOUR_CLIENT_KEY);
+
 
 //        pinningProfile();
 //        checkParseAuth();
 
+        // Register your parse models
+//        Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Profile.class);
+        Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
     }
 
-//    private void pinningProfile() {
-//        ParseObject userProfile = new ParseObject("GameScore");
-//        userProfile.put("score", 1337);
-//        userProfile.put("playerName", "Sean Plott");
-//        userProfile.put("cheatMode", false);
-//
-//        userProfile.pinInBackground();
-//    }
 
 //    private void checkParseAuth() {
 //        ParseUser currentUser = ParseUser.getCurrentUser();
@@ -88,32 +87,21 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
 
         getLIResponse();
 
-        // show the signup or login screen
-//        ParseUser newUser = new ParseUser();
-//        newUser.setUsername(currentProfile.getName());
-//        newUser.setPassword("1234");
-//        newUser.setEmail("kehi@gmail.com");
-//        newUser.put("profile_image","adsfasdf");
-//        newUser.put("location","1.2");
-//        newUser.signUpInBackground(new SignUpCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e == null) {
-//                    // Hooray! Let them use the app now.
-//                } else {
-//                    // Sign up didn't succeed. Look at the ParseException
-//                    // to figure out what went wrong
-//                }
-//            }
-//        });
 
-        if (41400 > seconds && seconds > 39600 ) {
-            Intent j = new Intent(this, LunchTimeActivity.class);
-            startActivity(j);
-        }
-        else {
-            Intent i = new Intent(this, NotLunchTimeActivity.class);
-            startActivity(i);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+//            if (41400 > seconds && seconds > 39600 ) {
+                Log.d("currentUser", currentUser.toString());
+                Intent j = new Intent(this, LunchTimeActivity.class);
+                startActivity(j);
+//            } else {
+//                Intent i = new Intent(this, NotLunchTimeActivity.class);
+//                startActivity(i);
+//            }
+        } else {
+            // show the signup or login screen
+            Log.d("DEBUG", "Current User not Found!!!!!");
         }
 
     }
@@ -128,6 +116,19 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
                 //CREATE MODELS
                 //LOAD THE MODEL DATA INTO A LIST VIEW
                 currentProfile = Profile.fromJSONObject(json);
+                String uId = currentProfile.getUid();
+                ParseUser.logInInBackground(uId ,"BOOM", new LogInCallback() {
+                            @Override
+                            public void done(ParseUser parseUser, ParseException e) {
+                                if (parseUser != null) {
+                                    // Hooray! The user is logged in.
+                                } else {
+                                    // Signup failed. Look at the ParseException to see what happened.
+                                }
+                            }
+                        }
+                );
+                Log.d("Deeeeg",currentProfile.getUid());
                 Log.d("DEBUG", json.toString());
             }
 

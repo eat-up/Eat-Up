@@ -1,12 +1,21 @@
 package com.eatup.android.eatup.model;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * Created by Ariel on 4/2/15.
  */
-public class Profile {
+@ParseClassName("Profile")
+public class Profile extends ParseObject {
+
+    public Profile() {
+        super();
+    }
 
     private String pictureUrl;
     private String name;
@@ -67,11 +76,21 @@ public class Profile {
 
     public static Profile fromJSONObject(JSONObject jsonObject) {
         Profile profile = new Profile();
+        // Create the ParseUser
+        ParseUser parseProfile = new ParseUser();
         try {
             profile.name = jsonObject.getString("firstName") + " " +jsonObject.getString("lastName");
             profile.industry = jsonObject.getString("industry");
             profile.pictureUrl = jsonObject.getString("pictureUrl");
             profile.uid = jsonObject.getString("id");
+
+            parseProfile.setUsername(profile.uid);
+            parseProfile.setPassword("BOOM");
+            //Setup custom properties
+            parseProfile.put("industry", profile.industry);
+            parseProfile.put("pictureUrl", profile.pictureUrl);
+            parseProfile.put("name", profile.name);
+            parseProfile.signUpInBackground();
         } catch (JSONException e) {
             e.printStackTrace();
         }
