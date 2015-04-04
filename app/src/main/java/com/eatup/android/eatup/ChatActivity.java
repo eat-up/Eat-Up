@@ -30,12 +30,15 @@ public class ChatActivity extends Activity {
     private static final String TAG = ChatActivity.class.getName();
     private static String sUserId;
     public static final String USER_ID_KEY = "userId";
+
     private EditText etMessage;
     private Button btSend;
+
     private ListView lvChat;
     private ArrayList<Message> mMessages;
     private ChatListAdapter mAdapter;
     private static final int MAX_CHAT_MESSAGES_TO_SHOW = 50;
+
     // Create a handler which can run code periodically
     private Handler handler = new Handler();
 
@@ -50,6 +53,7 @@ public class ChatActivity extends Activity {
         } else { // If not logged in, login as a new anonymous user
             login();
         }
+
         // Run the runnable object defined every 100ms
         handler.postDelayed(runnable, 100);
 
@@ -105,6 +109,7 @@ public class ChatActivity extends Activity {
         etMessage = (EditText) findViewById(R.id.etMessage);
         btSend = (Button) findViewById(R.id.btSend);
         lvChat = (ListView) findViewById(R.id.lvChat);
+
         mMessages = new ArrayList<Message>();
         mAdapter = new ChatListAdapter(ChatActivity.this, sUserId, mMessages);
         lvChat.setAdapter(mAdapter);

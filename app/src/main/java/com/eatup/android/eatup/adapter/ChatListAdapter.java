@@ -17,9 +17,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
 
-/**
- * Created by desy on 3/30/15.
- */
+
 public class ChatListAdapter extends ArrayAdapter<Message> {
     private String mUserId;
 

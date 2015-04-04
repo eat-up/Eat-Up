@@ -4,9 +4,6 @@ import android.app.Application;
 
 import com.parse.Parse;
 
-/**
- * Created by desy on 3/30/15.
- */
 public class ChatApplication extends Application {
     public static final String YOUR_APPLICATION_ID = "AERqqIXGvzH7Nmg45xa5T8zWRRjqT8UmbFQeeI";
     public static final String YOUR_CLIENT_KEY = "8bXPznF5eSLWq0sY9gTUrEF5BJlia7ltmLQFRh";
