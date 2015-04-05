@@ -9,8 +9,8 @@
     <string name="title_activity_lunch_time">Eat Lunch With Someone</string>
     <string name="title_activity_not_lunch_time">NotLunchTimeActivity</string>
     <string name="title_activity_lunching">LunchingActivity</string>
-    <string name="title_activity_match">MatchActivity</string>
-    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_match">This is your match</string>
+    <string name="title_activity_chat">Chat with your match</string>
     <string name="adjust_setting">Adjust Setting</string>
     <string name="setting_frequency">Frequency</string>
     <string name="setting_distance">Distance to Travel</string>
