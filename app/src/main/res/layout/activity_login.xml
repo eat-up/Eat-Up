@@ -9,7 +9,7 @@
 
     <TextView
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@drawable/txt_welcometoeatup"
         android:id="@+id/textView"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:onClick="loginToRest"
-        android:background="@drawable/btn_logintolinkedin"
+        android:background="@drawable/btn_loginwithlinkedin"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
