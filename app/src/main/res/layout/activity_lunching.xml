@@ -30,7 +30,7 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_cancelcanteatup"
+        android:background="@drawable/btn_cancelcant"
         android:id="@+id/btLunchCancel"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
