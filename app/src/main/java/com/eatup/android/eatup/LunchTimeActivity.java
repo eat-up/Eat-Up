@@ -54,10 +54,10 @@ public class LunchTimeActivity extends ActionBarActivity {
             query.whereNear("location",point);
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
-                public void done(List<ParseObject> parseObjects, ParseException e) {
+                public void done(List<ParseObject> parseObject, ParseException e) {
                     if (e==null) {
                         Log.d("location", "successful");
-                        parseObjects.get(0);
+                        // parseObject.get(0);
 
                     } else {
                         Log.d("location", "unsuccessful");
