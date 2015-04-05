@@ -8,11 +8,10 @@
     android:background="@drawable/bkg_gradient">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_message"
+        android:background="@drawable/txt_welcometoeatup"
         android:id="@+id/textView"
-        android:textSize="35sp"
         android:textStyle="bold"
         android:layout_marginTop="93dp"
         android:layout_alignParentTop="true"
@@ -22,7 +21,7 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:onClick="loginToRest"
-        android:background="@drawable/btn_loginlinkedin"
+        android:background="@drawable/btn_logintolinkedin"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
