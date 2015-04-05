@@ -7,24 +7,25 @@
     tools:context="com.eatup.android.eatup.LoginActivity"
     android:background="@drawable/bkg_gradient">
 
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:onClick="loginToRest"
-        android:background="@drawable/txt_loginlinkedin"
-        android:layout_marginTop="104dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_message"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp" />
+        android:layout_marginTop="93dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="loginToRest"
+        android:background="@drawable/btn_loginlinkedin"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>
