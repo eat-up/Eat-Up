@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/not_lunch_message"
         android:id="@+id/tvNotLunch"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
