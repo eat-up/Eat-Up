@@ -15,7 +15,7 @@
     <string name="setting_frequency">Frequency</string>
     <string name="setting_distance">Distance to Travel</string>
     <string name="lunch_ready">Ready to Eat Up?</string>
-    <string name="not_lunch_message">Awesome! We will check in tomorrow to see if you would like to have lunch. In the meantime, feel free to update your profile and settings in the top left corner.</string>
+    <string name="not_lunch_message">Awesome! We will check in tomorrow to see if you would like to have lunch.\n\nIn the meantime, feel free to update your profile and settings in the top left corner.</string>
     <string name="not_lunch_button">Got it!</string>
     <string name="lunching_message">Awesome! we will pair you within the allotted time.</string>
     <string name="lunching_time">Time</string>
