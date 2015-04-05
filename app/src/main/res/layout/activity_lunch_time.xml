@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/lunch_ready"
         android:id="@+id/tvReadyToEat"
-        android:textColor="#ffffff"
+        android:textColor="#ffff00"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
