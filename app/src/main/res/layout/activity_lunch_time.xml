@@ -16,7 +16,7 @@
         android:layout_width="320dp"
         android:layout_height="65dp"
         android:id="@+id/tvReadyToEat"
-        android:background="@drawable/txt_readytoeatup"
+        android:background="@drawable/txt_readyeatup"
         android:textColor="#ffff00"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
