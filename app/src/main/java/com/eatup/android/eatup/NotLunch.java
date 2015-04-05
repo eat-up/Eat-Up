@@ -48,7 +48,7 @@ public class NotLunch extends ActionBarActivity {
             }
         });
         tvNotTimeCount = (TextView) findViewById(R.id.tvNotTimeCount);
-        tvTest = (TextView) findViewById(R.id.tvTest);
+
 
     }
 
