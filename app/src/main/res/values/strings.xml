@@ -33,4 +33,5 @@
     <string name="no">Not Today!</string>
     <string name="about">About</string>
     <string name="meetneat">\t\tMeet and eat with \nsomeone in your area!</string>
+    <string name="select">Please select an one.</string>
 </resources>
