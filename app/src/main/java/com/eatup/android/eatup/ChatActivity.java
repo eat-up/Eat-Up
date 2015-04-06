@@ -42,12 +42,14 @@ public class ChatActivity extends Activity {
     // Create a handler which can run code periodically
     private Handler handler = new Handler();
 
+    private String sMatchPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         // User login
+        sMatchPic = getIntent().getStringExtra("matchPic");
         if (ParseUser.getCurrentUser() != null) { // start with existing user
             startWithCurrentUser();
         } else { // If not logged in, login as a new anonymous user
@@ -111,7 +113,7 @@ public class ChatActivity extends Activity {
         lvChat = (ListView) findViewById(R.id.lvChat);
 
         mMessages = new ArrayList<Message>();
-        mAdapter = new ChatListAdapter(ChatActivity.this, sUserId, mMessages);
+        mAdapter = new ChatListAdapter(ChatActivity.this, sUserId, sMatchPic,mMessages);
         lvChat.setAdapter(mAdapter);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +141,8 @@ public class ChatActivity extends Activity {
         ParseQuery<Message> query = ParseQuery.getQuery(Message.class);
         // Configure limit and sort order
         query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
+        //TODO: Get group id
+//        query.whereEqualTo("groupId", "123");
         query.orderByAscending("createdAt");
         // Execute query to fetch all messages from Parse asynchronously
         // This is equivalent to a SELECT query with SQL

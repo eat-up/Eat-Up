@@ -21,6 +21,7 @@ public class LunchTimeActivity extends ActionBarActivity {
     private double longitude;
     ParseUser currentUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

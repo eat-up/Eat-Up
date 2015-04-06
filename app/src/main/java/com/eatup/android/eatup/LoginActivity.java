@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
+import com.eatup.android.eatup.model.Message;
 import com.eatup.android.eatup.model.Profile;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.parse.LogInCallback;
@@ -46,6 +47,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
         // Register your parse models
 //        Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Profile.class);
+        ParseObject.registerSubclass(Message.class);
         Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
     }
 
