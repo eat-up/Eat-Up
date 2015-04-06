@@ -21,7 +21,7 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:onClick="loginToRest"
-        android:background="@drawable/btn_loginwithlinkedin"
+        android:background="@drawable/btn_loginwlinkedin"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
