@@ -7,8 +7,6 @@ import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseException;
@@ -23,13 +21,13 @@ import java.util.concurrent.TimeUnit;
 
 
 public class LunchingActivity extends ActionBarActivity {
-    private Button btCancel;
     private TextView tvTimeCount;
     ParseUser currentUser;
 
     public String partnerUID = "";
     public String eatUpPartner = "";
     public String profilePic;
+    public String industry;
 
     public double averLat;
     public double averLong;
@@ -57,9 +55,11 @@ public class LunchingActivity extends ActionBarActivity {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereNear("location",(ParseGeoPoint)currentUser.get("location"));
         query.whereEqualTo("lunching", "yes");
+
         partnerUID = query.find().get(1).get("username").toString();
         eatUpPartner = query.find().get(1).get("name").toString();
         profilePic = query.find().get(1).get("pictureUrl").toString();
+        industry = query.find().get(1).get("industry").toString();
 
         averLat = (query.find().get(0).getParseGeoPoint("location").getLatitude() +
                 query.find().get(1).getParseGeoPoint("location").getLatitude()) / 2;
@@ -69,21 +69,8 @@ public class LunchingActivity extends ActionBarActivity {
     }
 
     private void initSettings() {
-        btCancel = (Button) findViewById(R.id.btLunchCancel);
-        btCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentUser = ParseUser.getCurrentUser();
-                currentUser.put("lunching","no");
-                currentUser.saveInBackground();
-                Intent cancel = new Intent(getApplicationContext(), NotLunch.class);
-                startActivity(cancel);
-            }
-        });
         tvTimeCount = (TextView) findViewById(R.id.tvTimeCount);
-
         currentUser = ParseUser.getCurrentUser();
-
     }
 
     private void timeTick() {
@@ -95,7 +82,7 @@ public class LunchingActivity extends ActionBarActivity {
         long millisecond = ((hour2 *60 *60) + (minute * 60) + second) * 1000;
         long timeleft = 41400000 - millisecond;
 
-        new CountDownTimer(3000, 1000) { // adjust the milli seconds here
+        new CountDownTimer(10000, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
 
@@ -109,16 +96,23 @@ public class LunchingActivity extends ActionBarActivity {
 
             public void onFinish()
             {
-                Intent pairUp = new Intent(getApplicationContext(), MatchActivity.class);
-                Bundle b = new Bundle();
-                b.putString("partnerUID",partnerUID);
-                b.putString("partner",eatUpPartner);
-                b.putString("profilePic",profilePic);
-                b.putDouble("averLat", averLat);
-                b.putDouble("averLong",averLong);
-                pairUp.putExtras(b);
+                if (currentUser.get("lunching").toString().equalsIgnoreCase("yes")) {
+                    Intent pairUp = new Intent(getApplicationContext(), MatchActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("partnerUID", partnerUID);
+                    b.putString("partner", eatUpPartner);
+                    b.putString("profilePic", profilePic);
+                    b.putDouble("averLat", averLat);
+                    b.putDouble("averLong", averLong);
+                    b.putString("industry",industry);
+                    pairUp.putExtras(b);
 
-                startActivity(pairUp);
+                    startActivity(pairUp);
+                } else {
+                    Intent i = new Intent(getApplicationContext(),NotLunchTimeActivity.class);
+                    startActivity(i);
+                }
+
             }
         }.start();
 
@@ -158,5 +152,8 @@ public class LunchingActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        currentUser.put("lunching","no");
+        currentUser.saveInBackground();
+        finish();
     }
 }

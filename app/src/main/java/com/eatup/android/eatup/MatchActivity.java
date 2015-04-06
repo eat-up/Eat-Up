@@ -1,6 +1,7 @@
 package com.eatup.android.eatup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -39,6 +40,7 @@ public class MatchActivity extends ActionBarActivity {
     String partnerUID;
     String profilePic;
     String partnerName;
+    String industry;
     Double averLat;
     Double averLong;
 
@@ -52,6 +54,7 @@ public class MatchActivity extends ActionBarActivity {
         averLong = b.getDouble("averLong");
         partnerName = b.getString("partner");
         profilePic = b.getString("profilePic", profilePic);
+        industry = b.getString("industry");
         //getRestaurants();
         Log.d("partneeer!!", partnerUID);
         Log.d("partneeer!2222", partnerName);
@@ -61,7 +64,7 @@ public class MatchActivity extends ActionBarActivity {
         TextView tvFullName = (TextView) findViewById(R.id.tvFullName);
         tvFullName.setText(partnerName);
         TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
-        tvTagline.setText("Developer");
+        tvTagline.setText(industry);
 
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         //ivProfileImage.setImageResource();
@@ -109,7 +112,6 @@ public class MatchActivity extends ActionBarActivity {
             Log.v("Result ", result);
 
             try {
-
 
                 JSONObject o1 = new JSONObject(result);
                 JSONArray businesses = o1.getJSONArray("businesses");
@@ -170,5 +172,8 @@ public class MatchActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),LunchTimeActivity.class);
+        startActivity(i);
+        finish();
     }
 }

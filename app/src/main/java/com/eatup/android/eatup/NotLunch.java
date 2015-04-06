@@ -6,8 +6,6 @@ import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
@@ -18,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class NotLunch extends ActionBarActivity {
-    private Button btCanLunch;
     private TextView tvNotTimeCount;
     private static final String FORMAT = "%02d:%02d:%02d";
     ParseUser currentUser;
@@ -33,16 +30,6 @@ public class NotLunch extends ActionBarActivity {
     }
 
     private void initSettings() {
-        btCanLunch = (Button) findViewById(R.id.btCanLunch);
-        btCanLunch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentUser.put("lunching","yes");
-                currentUser.saveInBackground();
-                Intent i = new Intent(getApplicationContext(), LunchingActivity.class);
-                startActivity(i);
-            }
-        });
         tvNotTimeCount = (TextView) findViewById(R.id.tvNotTimeCount);
         currentUser = ParseUser.getCurrentUser();
     }
@@ -56,7 +43,7 @@ public class NotLunch extends ActionBarActivity {
         long millisecond = ((hour2 *60 *60) + (minute * 60) + second) * 1000;
         long timeleft = 41400000 - millisecond;
 
-        new CountDownTimer(timeleft, 1000) { // adjust the milli seconds here
+        new CountDownTimer(10000, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
 
@@ -69,7 +56,8 @@ public class NotLunch extends ActionBarActivity {
             }
 
             public void onFinish() {
-                tvNotTimeCount.setText("done!");
+                Intent i = new Intent(getApplicationContext(),NotLunchTimeActivity.class);
+                startActivity(i);
             }
         }.start();
     }
@@ -99,5 +87,6 @@ public class NotLunch extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        finish();
     }
 }

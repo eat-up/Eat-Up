@@ -14,10 +14,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="54dp"
         android:layout_above="@+id/textView4"
-        android:layout_alignLeft="@+id/btCanLunch"
-        android:layout_alignStart="@+id/btCanLunch"
-        android:layout_alignRight="@+id/btCanLunch"
-        android:layout_alignEnd="@+id/btCanLunch" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,16 +33,9 @@
         android:textSize="22sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold"/><![CDATA[
 
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:background="@drawable/btn_nevermindican"
-        android:id="@+id/btCanLunch"
-        android:layout_marginBottom="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
- />
+    />
 
+]]>
 </RelativeLayout>

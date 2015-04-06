@@ -3,21 +3,14 @@ package com.eatup.android.eatup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.util.List;
 
 
 public class LunchTimeActivity extends ActionBarActivity {
@@ -47,32 +40,8 @@ public class LunchTimeActivity extends ActionBarActivity {
             longitude = gps.getLongitude();
             ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
             currentUser.put("location",point);
+            currentUser.put("paired", "no");
             currentUser.saveInBackground();
-//            ParseObject cLocation = new ParseObject("CurrentLocation");
-//            cLocation.put("location",point);
-//            cLocation.saveInBackground();
-
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-            query.whereNear("location",(ParseGeoPoint)currentUser.get("location"));
-            //query.whereWithinKilometers("location",point,1);
-            query.whereEqualTo("lunching","yes");
-            query.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> parseObjects, ParseException e) {
-                    if (e == null) {
-                        Log.d("location", "successful");
-                        if (parseObjects.size() > 1) {
-                            Log.d("location3", Integer.toString(parseObjects.size()));
-                            Log.d("location4", parseObjects.get(0).getParseGeoPoint("location").toString());
-                            Log.d("location5", parseObjects.get(1).getParseGeoPoint("location").toString());
-
-                        }
-
-                    } else {
-                        Log.d("location", "unsuccessful");
-                    }
-                }
-            });
 
 
             tvGPSloc.setText(Double.toString(latitude) + "," + Double.toString(longitude));
