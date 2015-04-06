@@ -60,6 +60,7 @@ public class LunchingActivity extends ActionBarActivity {
         partnerUID = query.find().get(1).get("username").toString();
         eatUpPartner = query.find().get(1).get("name").toString();
         profilePic = query.find().get(1).get("pictureUrl").toString();
+
         averLat = (query.find().get(0).getParseGeoPoint("location").getLatitude() +
                 query.find().get(1).getParseGeoPoint("location").getLatitude()) / 2;
         averLong = (query.find().get(0).getParseGeoPoint("location").getLongitude() +
