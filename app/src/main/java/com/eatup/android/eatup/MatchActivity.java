@@ -1,7 +1,8 @@
 package com.eatup.android.eatup;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,11 +16,26 @@ public class MatchActivity extends ActionBarActivity {
     private static final String TOKEN = "8Nf6hP8QYr1LX4ijGQxdaExZg3BrVQzX";
     private static final String TOKEN_SECRET = "X8h0eofBYRxkX53860LspFAS49E";
 
+    String partnerUID;
+    String profilePic;
+    String partnerName;
+    Double averLat;
+    Double averLong;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
+        Bundle b = getIntent().getExtras();
+        partnerUID = b.getString("partnerUID");
+        averLat = b.getDouble("averLat");
+        averLong = b.getDouble("averLong");
+        partnerName = b.getString("partner");
+        profilePic = b.getString("profilePic", profilePic);
         getRestaurants();
+        Log.d("partneeer!!", partnerUID);
+        Log.d("partneeer!2222", partnerName);
+        Log.d("partneeer!3333", profilePic);
     }
 
     private void getRestaurants() {
