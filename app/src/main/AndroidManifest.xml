@@ -31,8 +31,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="Eat Up"
-            >
+            android:label="Eat Up">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
