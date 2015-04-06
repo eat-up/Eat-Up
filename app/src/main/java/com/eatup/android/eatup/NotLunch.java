@@ -45,7 +45,6 @@ public class NotLunch extends ActionBarActivity {
         });
         tvNotTimeCount = (TextView) findViewById(R.id.tvNotTimeCount);
         currentUser = ParseUser.getCurrentUser();
-
     }
 
     private void timeTick() {

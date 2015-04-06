@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.codepath.apps.mysimpletweets.ProfileActivity">
+    tools:context="com.codepath.apps.mysimpletweets.ProfileActivity"
+    android:background="@drawable/bkg_gradient">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/ivProfileImage"
             android:text="name"
+            android:textStyle="bold"
             android:textSize="16sp"/>
         <TextView
             android:id="@+id/tvTagline"
@@ -51,14 +53,16 @@
             android:id="@+id/tvFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lunch Budd"/>
+            android:text="Lunch Buddy"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="5 following"/>
+            android:text="5 following"
+            />
 
 
 
@@ -84,8 +88,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurents Near By"
-            android:id="@+id/textView5" />
+            android:text="Near By Restaurants"
+            android:id="@+id/textView5"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <FrameLayout

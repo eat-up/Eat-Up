@@ -5,11 +5,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.eatup.android.eatup.NotLunchTimeActivity"
+    android:background="@drawable/bkg_gradient"
     >
 
-    <TextView android:text="@string/not_lunch_message" android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/not_lunch_message"
         android:id="@+id/tvNotLunch"
-        android:textSize="20sp" />
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="58dp" />
 
 </RelativeLayout>

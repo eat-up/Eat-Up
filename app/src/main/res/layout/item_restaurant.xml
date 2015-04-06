@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/bkg_gradient">
 
     <ImageView
         android:layout_width="50dp"
@@ -23,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurent"
+            android:text="Restaurant"
             android:textSize="10sp"
             android:textStyle="bold"
             android:id="@+id/tvRestName"
@@ -41,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurent Address"
+            android:text="Restaurant Address"
             android:id="@+id/tvAddress"
             android:textSize="10sp"
             android:autoLink="all"
