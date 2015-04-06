@@ -6,7 +6,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="welcome_message">Welcome to Eat Up!</string>
-    <string name="title_activity_lunch_time">Eat Lunch With Someone</string>
+    <string name="title_activity_lunch_time">Eat With Someone</string>
     <string name="title_activity_not_lunch_time">NotLunchTimeActivity</string>
     <string name="title_activity_lunching">Added To Eat Up List</string>
     <string name="title_activity_match">This is your match</string>
@@ -32,4 +32,5 @@
     <string name="yes">Yes!</string>
     <string name="no">Not Today!</string>
     <string name="about">About</string>
+    <string name="meetneat">\t\tMeet and eat with \nsomeone in your area!</string>
 </resources>

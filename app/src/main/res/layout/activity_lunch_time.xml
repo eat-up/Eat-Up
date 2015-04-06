@@ -10,8 +10,6 @@
     android:background="@drawable/bkg_gradient">
 
 
-
-
     <TextView
         android:layout_width="320dp"
         android:layout_height="60dp"
@@ -32,10 +30,10 @@
         android:layout_height="60dp"
         android:id="@+id/btYes"
         android:background="@drawable/btn_yes"
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/tvMeetnEat"
         android:layout_alignLeft="@+id/btNotToday"
-        android:layout_alignStart="@+id/btNotToday"
-        android:layout_marginTop="62dp" />
+        android:layout_alignStart="@+id/btNotToday" />
 
 
     <Button
@@ -50,7 +48,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meet and eat with someone!"
+        android:text="@string/meetneat"
         android:id="@+id/tvMeetnEat"
         android:textStyle="bold"
         android:textColor="#fc313131"
@@ -63,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
+        android:textColor="#ffffff"
         android:id="@+id/tvGPSloc"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
