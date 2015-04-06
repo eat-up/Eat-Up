@@ -21,10 +21,12 @@ import java.util.List;
 
 public class ChatListAdapter extends ArrayAdapter<Message> {
     private String mUserId;
+    private String mMatchPic;
 
-    public ChatListAdapter(Context context, String userId, List<Message> messages) {
+    public ChatListAdapter(Context context, String userId, String matchPic, List<Message> messages) {
         super(context, 0, messages);
         this.mUserId = userId;
+        this.mMatchPic = matchPic;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class ChatListAdapter extends ArrayAdapter<Message> {
             ParseUser currentUser = ParseUser.getCurrentUser();
             Picasso.with(getContext()).load((String) currentUser.get("pictureUrl")).into(profileView);
         } else {
-            Picasso.with(getContext()).load(getProfileUrl(message.getUserId())).into(profileView);
+            Picasso.with(getContext()).load(mMatchPic).into(profileView);
         }
         holder.body.setText(message.getBody());
         return convertView;

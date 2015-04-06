@@ -1,12 +1,14 @@
 package com.eatup.android.eatup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -144,7 +146,11 @@ public class MatchActivity extends ActionBarActivity {
     }
     */
 
-
+    public void openChat(View view) {
+        Intent i = new Intent(this, ChatActivity.class);
+        i.putExtra("matchPic", profilePic);
+        startActivity(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
