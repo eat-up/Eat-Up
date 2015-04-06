@@ -10,11 +10,9 @@
     android:background="@drawable/bkg_gradient">
 
 
-
-
     <TextView
         android:layout_width="320dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:id="@+id/tvReadyToEat"
         android:background="@drawable/txt_readyeatup"
         android:textColor="#ffff00"
@@ -32,9 +30,10 @@
         android:layout_height="60dp"
         android:id="@+id/btYes"
         android:background="@drawable/btn_yes"
-        android:layout_below="@+id/tvReadyToEat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp" />
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/tvSelect"
+        android:layout_alignLeft="@+id/btNotToday"
+        android:layout_alignStart="@+id/btNotToday" />
 
 
     <Button
@@ -42,15 +41,27 @@
         android:layout_height="60dp"
         android:background="@drawable/btn_nottoday"
         android:id="@+id/btNotToday"
-        android:layout_marginTop="60dp"
         android:layout_below="@+id/btYes"
-        android:layout_alignLeft="@+id/btYes"
-        android:layout_alignStart="@+id/btYes" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select"
+        android:id="@+id/tvSelect"
+        android:textStyle="bold"
+        android:textColor="#fc313131"
+        android:textSize="24dp"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/tvReadyToEat"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
+        android:textColor="#ffffff"
         android:id="@+id/tvGPSloc"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

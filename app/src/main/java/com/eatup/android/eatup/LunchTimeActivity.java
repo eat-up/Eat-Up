@@ -50,17 +50,26 @@ public class LunchTimeActivity extends ActionBarActivity {
             longitude = gps.getLongitude();
             ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
             currentUser.put("location",point);
-            ParseObject cLocation = new ParseObject("CurrentLocation");
-            cLocation.put("location",point);
-            cLocation.saveInBackground();
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-            query.whereNear("location",point);
+            currentUser.saveInBackground();
+//            ParseObject cLocation = new ParseObject("CurrentLocation");
+//            cLocation.put("location",point);
+//            cLocation.saveInBackground();
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+            query.whereNear("location",(ParseGeoPoint)currentUser.get("location"));
+            //query.whereWithinKilometers("location",point,1);
+            query.whereEqualTo("lunching","yes");
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
-                public void done(List<ParseObject> parseObject, ParseException e) {
-                    if (e==null) {
+                public void done(List<ParseObject> parseObjects, ParseException e) {
+                    if (e == null) {
                         Log.d("location", "successful");
-                        // parseObject.get(0);
+                        if (parseObjects.size() > 1) {
+                            Log.d("location3", Integer.toString(parseObjects.size()));
+                            Log.d("location4", parseObjects.get(0).getParseGeoPoint("location").toString());
+                            Log.d("location5", parseObjects.get(1).getParseGeoPoint("location").toString());
+
+                        }
 
                     } else {
                         Log.d("location", "unsuccessful");
@@ -68,18 +77,6 @@ public class LunchTimeActivity extends ActionBarActivity {
                 }
             });
 
-//            ParseQuery<Profile> query = ParseQuery.getQuery("location");
-//            query.whereNear("location",point);
-//            query.findInBackground(new FindCallback<Profile>() {
-//                @Override
-//                public void done(List<Profile> profiles, ParseException e) {
-//                    if (e==null) {
-//                        Log.d("location", "successful");
-//                    } else {
-//                        Log.d("location", "unsuccessful");
-//                    }
-//                }
-//            });
 
             tvGPSloc.setText(Double.toString(latitude) + "," + Double.toString(longitude));
         } else {

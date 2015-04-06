@@ -76,6 +76,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<LinkedInClient> {
         return true;
     }
 
+
     // OAuth authenticated successfully, launch primary authenticated activity
     // i.e Display application "homepage"
     @Override

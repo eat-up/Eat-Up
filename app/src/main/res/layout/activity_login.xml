@@ -17,13 +17,29 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meetneat"
+        android:id="@+id/tvMeetnEat"
+        android:textStyle="bold"
+        android:textColor="#fc313131"
+        android:textSize="26dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp" />
+
+
     <Button
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:onClick="loginToRest"
-        android:background="@drawable/btn_loginwithlinkedin"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/btn_loginwlinkedin"
+        android:layout_below="@+id/tvMeetnEat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
+
 
 
 

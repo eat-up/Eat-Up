@@ -1,6 +1,5 @@
 package com.eatup.android.eatup;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -21,8 +20,6 @@ import java.util.concurrent.TimeUnit;
 public class NotLunch extends ActionBarActivity {
     private Button btCanLunch;
     private TextView tvNotTimeCount;
-    private TextView tvTest;
-    private static BroadcastReceiver tickReceiver;
     private static final String FORMAT = "%02d:%02d:%02d";
     ParseUser currentUser;
 
@@ -40,7 +37,6 @@ public class NotLunch extends ActionBarActivity {
         btCanLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 currentUser.put("lunching","yes");
                 currentUser.saveInBackground();
                 Intent i = new Intent(getApplicationContext(), LunchingActivity.class);
@@ -48,8 +44,7 @@ public class NotLunch extends ActionBarActivity {
             }
         });
         tvNotTimeCount = (TextView) findViewById(R.id.tvNotTimeCount);
-
-
+        currentUser = ParseUser.getCurrentUser();
     }
 
     private void timeTick() {
@@ -100,5 +95,9 @@ public class NotLunch extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
