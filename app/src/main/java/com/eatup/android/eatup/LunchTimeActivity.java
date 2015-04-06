@@ -28,6 +28,9 @@ public class LunchTimeActivity extends ActionBarActivity {
     private double longitude;
     ParseUser currentUser;
 
+    //Testing
+    private Button btChat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +90,9 @@ public class LunchTimeActivity extends ActionBarActivity {
     private void initSettings() {
         btYes = (Button) findViewById(R.id.btYes);
         btNotToday = (Button) findViewById(R.id.btNotToday);
+
+        btChat = (Button) findViewById(R.id.btnChat);
+
         tvGPSloc = (TextView) findViewById(R.id.tvGPSloc);
         currentUser = ParseUser.getCurrentUser();
 
@@ -107,6 +113,15 @@ public class LunchTimeActivity extends ActionBarActivity {
                 currentUser.saveInBackground();
                 Intent notToday = new Intent(getApplicationContext(), NotLunch.class);
                 startActivity(notToday);
+
+            }
+        });
+
+        btChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chat = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(chat);
 
             }
         });

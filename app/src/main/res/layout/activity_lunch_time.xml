@@ -54,4 +54,14 @@
         android:id="@+id/tvGPSloc"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="proceed to chat"
+        android:id="@+id/btnChat"
+        android:layout_below="@+id/btNotToday"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:onClick="loginToChat"/>
 </RelativeLayout>

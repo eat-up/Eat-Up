@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.eatup.android.eatup.R;
 import com.eatup.android.eatup.model.Message;
+import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
 
 import java.math.BigInteger;
@@ -52,7 +53,13 @@ public class ChatListAdapter extends ArrayAdapter<Message> {
             holder.body.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         }
         final ImageView profileView = isMe ? holder.imageRight : holder.imageLeft;
-        Picasso.with(getContext()).load(getProfileUrl(message.getUserId())).into(profileView);
+        //TODO: Set picture urls for current user and other user
+        if(isMe) {
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            Picasso.with(getContext()).load((String) currentUser.get("pictureUrl")).into(profileView);
+        } else {
+            Picasso.with(getContext()).load(getProfileUrl(message.getUserId())).into(profileView);
+        }
         holder.body.setText(message.getBody());
         return convertView;
     }
