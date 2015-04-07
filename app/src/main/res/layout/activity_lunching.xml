@@ -14,10 +14,10 @@
         android:paddingLeft="20dp"
         android:textColor="#0000FF"
         android:textStyle="bold"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="45dp" />
+        android:layout_above="@+id/tvLunchTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,8 +25,7 @@
         android:text="@string/lunching_time"
         android:id="@+id/tvLunchTime"
         android:textSize="26sp"
-        android:layout_marginTop="52dp"
-        android:layout_below="@+id/lunching_msg"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -38,12 +37,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="59dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="11"
-        android:id="@+id/textView6"
-        android:layout_alignLeft="@+id/tvLunchTime" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,8 +46,9 @@
         android:id="@+id/tvTimeCount"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/btLunchCancel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp" />
 
 
 </RelativeLayout>
