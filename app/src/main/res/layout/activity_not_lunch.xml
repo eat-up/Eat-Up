@@ -12,6 +12,7 @@
         android:textColor="#0000FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
         android:id="@+id/tvNotlunchMsg"
         android:textSize="23sp"
         android:textStyle="bold"
