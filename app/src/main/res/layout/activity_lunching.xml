@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/lunching_msg"
         android:textSize="28sp"
+        android:textColor="#0000FF"
         android:textStyle="bold"
         android:layout_below="@+id/textView6"
         android:layout_alignParentRight="true"
