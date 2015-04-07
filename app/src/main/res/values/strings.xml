@@ -20,7 +20,7 @@
     <string name="lunching_message">Awesome! We will pair you within the allotted time.</string>
     <string name="lunching_time">Time</string>
     <string name="title_activity_not_lunch">To Eat Or Not To Eat</string>
-    <string name="not_lunch_msg">Bummer! You can still change your mind and \nEat Up if you'd like.</string>
+    <string name="not_lunch_msg">Bummer! You can still change your mind and \nEat Up if you would like.</string>
     <string name="lunching_cancel">Cancel, can\'t Eat Up today</string>
     <string name="time_left">Time Left</string>
     <string name="cancel_not_lunch">Nevermind, I can Eat Up!</string>
