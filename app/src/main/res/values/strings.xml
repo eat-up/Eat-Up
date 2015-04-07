@@ -34,4 +34,6 @@
     <string name="about">About</string>
     <string name="meetneat">\t\tMeet and eat with \nsomeone in your area!</string>
     <string name="select">Please select one.</string>
+    <string name="name">name</string>
+    <string name="tagline">tagline</string>
 </resources>
