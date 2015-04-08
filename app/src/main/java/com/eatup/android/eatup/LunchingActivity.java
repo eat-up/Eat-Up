@@ -101,7 +101,7 @@ public class LunchingActivity extends ActionBarActivity {
     }
 
     private void initSettings() {
-        tvTimeCount = (TextView) findViewById(R.id.tvTimeCount);
+        tvTimeCount = (TextView) findViewById(R.id.tvLunchTime);
         currentUser = ParseUser.getCurrentUser();
     }
 

@@ -80,8 +80,6 @@
     </RelativeLayout>
 
 
-<<<<<<< HEAD
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="350dp"
@@ -97,61 +95,18 @@
             android:layout_below="@+id/llMessage"/>
 
     </FrameLayout>
-=======
-    </LinearLayout>
 
->>>>>>> 69716ee198665972de37162c4c893b5b44d91784
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-<<<<<<< HEAD
         android:layout_height="30dp"
         android:id="@+id/llMessage"
         android:layout_below="@+id/rlUserHeader"
-=======
-        android:layout_height="10dp"
-        android:layout_below="@+id/flContainer"
->>>>>>> 69716ee198665972de37162c4c893b5b44d91784
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
     </LinearLayout>
 
-
-<<<<<<< HEAD
-=======
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/flContainer"
-        android:layout_below="@+id/textView5">
-
-    </FrameLayout>
-
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:paddingLeft="10sp"
-        android:background="@drawable/txt_restaurants"
-        android:id="@+id/textView5"
-        android:textStyle="bold"
-        android:textColor="#0000FF"
-        android:layout_below="@+id/llCounts"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lvBusinesses"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/flContainer" />
->>>>>>> 69716ee198665972de37162c4c893b5b44d91784
 
 </RelativeLayout>
