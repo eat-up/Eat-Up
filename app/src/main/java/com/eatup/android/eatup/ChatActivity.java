@@ -50,13 +50,12 @@ public class ChatActivity extends Activity {
         setContentView(R.layout.activity_chat);
         // User login
         sMatchPic = getIntent().getStringExtra("matchPic");
-        groupIdNumber = getIntent().getIntExtra("chatId", 0);
         if (ParseUser.getCurrentUser() != null) { // start with existing user
             startWithCurrentUser();
         } else { // If not logged in, login as a new anonymous user
             login();
         }
-
+        ParseUser.getCurrentUser().fetchInBackground();
         // Run the runnable object defined every 100ms
         handler.postDelayed(runnable, 100);
 
@@ -114,7 +113,7 @@ public class ChatActivity extends Activity {
         lvChat = (ListView) findViewById(R.id.lvChat);
 
         mMessages = new ArrayList<Message>();
-        mAdapter = new ChatListAdapter(ChatActivity.this, sUserId, sMatchPic,mMessages);
+        mAdapter = new ChatListAdapter(ChatActivity.this, sUserId, sMatchPic, mMessages);
         lvChat.setAdapter(mAdapter);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +123,7 @@ public class ChatActivity extends Activity {
                 Message message = new Message();
                 message.setUserId(sUserId);
                 message.setBody(body);
+                message.setGroupID(groupIdNumber);
                 message.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -142,9 +142,9 @@ public class ChatActivity extends Activity {
         ParseQuery<Message> query = ParseQuery.getQuery(Message.class);
         // Configure limit and sort order
         query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
-        //TODO: Get group id
-        query.whereEqualTo("groupID", groupIdNumber);
-//        query.whereEqualTo("groupId", "123");
+        groupIdNumber = (Integer) ParseUser.getCurrentUser().get("groupID");
+        query.whereEqualTo("groupId", groupIdNumber);
+        Log.v("YAYAYAYAY", ParseUser.getCurrentUser().get("groupID").toString());
         query.orderByAscending("createdAt");
         // Execute query to fetch all messages from Parse asynchronously
         // This is equivalent to a SELECT query with SQL

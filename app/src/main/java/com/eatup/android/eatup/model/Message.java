@@ -14,11 +14,19 @@ public class Message extends ParseObject {
         return getString("body");
     }
 
+    public int getGroupID() {
+        return getInt("groupId");
+    }
+
     public void setUserId(String userId) {
         put("userId", userId);
     }
 
     public void setBody(String body) {
         put("body", body);
+    }
+
+    public void setGroupID(int groupID) {
+        put("groupId", groupID);
     }
 }
