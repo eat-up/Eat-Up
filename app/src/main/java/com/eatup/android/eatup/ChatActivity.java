@@ -29,7 +29,7 @@ public class ChatActivity extends Activity {
 
     private static final String TAG = ChatActivity.class.getName();
     private static String sUserId;
-    public static final String USER_ID_KEY = "userId";
+    public static int groupIdNumber;
 
     private EditText etMessage;
     private Button btSend;
@@ -50,6 +50,7 @@ public class ChatActivity extends Activity {
         setContentView(R.layout.activity_chat);
         // User login
         sMatchPic = getIntent().getStringExtra("matchPic");
+        groupIdNumber = getIntent().getIntExtra("chatId", 0);
         if (ParseUser.getCurrentUser() != null) { // start with existing user
             startWithCurrentUser();
         } else { // If not logged in, login as a new anonymous user
@@ -142,6 +143,7 @@ public class ChatActivity extends Activity {
         // Configure limit and sort order
         query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
         //TODO: Get group id
+        query.whereEqualTo("groupID", groupIdNumber);
 //        query.whereEqualTo("groupId", "123");
         query.orderByAscending("createdAt");
         // Execute query to fetch all messages from Parse asynchronously
