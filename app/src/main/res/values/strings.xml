@@ -17,10 +17,10 @@
     <string name="lunch_ready">Ready to Eat Up?</string>
     <string name="not_lunch_message">Awesome! We will check in tomorrow to see if you would like to have lunch.\n\nIn the meantime, feel free to update your profile and settings in the top left corner.</string>
     <string name="not_lunch_button">Got it!</string>
-    <string name="lunching_message">Awesome! we will pair you within the allotted time.</string>
+    <string name="lunching_message">Awesome! We will pair you with a lunch buddy within the allotted time.</string>
     <string name="lunching_time">Time</string>
     <string name="title_activity_not_lunch">To Eat Or Not To Eat</string>
-    <string name="not_lunch_msg">Bummer! You can still change your mind and Eat Up if you choose to..</string>
+    <string name="not_lunch_msg">Bummer! You can still change your mind and \nEat Up if you would like.</string>
     <string name="lunching_cancel">Cancel, can\'t Eat Up today</string>
     <string name="time_left">Time Left</string>
     <string name="cancel_not_lunch">Nevermind, I can Eat Up!</string>
@@ -34,4 +34,6 @@
     <string name="about">About</string>
     <string name="meetneat">\t\tMeet and eat with \nsomeone in your area!</string>
     <string name="select">Please select one.</string>
+    <string name="name">name</string>
+    <string name="tagline">tagline</string>
 </resources>

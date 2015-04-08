@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/bkg_gradient">
+    android:color="#ffffff">
     <ImageView
         android:id="@+id/ivProfileLeft"
         android:contentDescription="@string/profile_other"

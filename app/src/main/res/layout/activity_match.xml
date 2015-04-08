@@ -18,39 +18,69 @@
             android:id="@+id/ivProfileImage"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginRight="10dp"
+            android:paddingTop="5dp"
+            android:src="@android:drawable/screen_background_light_transparent"
+            android:layout_below="@+id/tvLunchBuddy"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="@android:drawable/screen_background_light_transparent"/>
-        <TextView
-            android:id="@+id/tvFullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ivProfileImage"
-            android:text="name"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-        <ImageView
-            android:id="@+id/ivChat"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/btn_chat"
-            android:onClick="openChat"/>
+            android:layout_alignParentStart="true" />
+
+
+
         <TextView
             android:id="@+id/tvTagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/tvFullName"
+            android:text="@string/tagline"
+            android:textColor="#0000FF"
+            android:textSize="16sp"
             android:layout_below="@+id/tvFullName"
-            android:text="tagline"
-            android:textSize="12sp"/>
+            android:layout_alignLeft="@+id/tvFullName"
+            android:layout_alignStart="@+id/tvFullName" />
+
+
+        <TextView
+            android:id="@+id/tvFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold"
+            android:textColor="#0000FF"
+            android:textSize="16sp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:layout_alignBottom="@+id/ivChat"
+            android:layout_toRightOf="@+id/ivProfileImage"
+            android:layout_toEndOf="@+id/ivProfileImage" />
+
+
+
+        <ImageView
+            android:id="@+id/ivChat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/btn_chats"
+            android:onClick="openChat"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <TextView
+            android:id="@+id/tvLunchBuddy"
+            android:layout_width="300dp"
+            android:layout_height="28dp"
+            android:background="@drawable/txt_lunchbuddy"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
 
     </RelativeLayout>
 
 
+<<<<<<< HEAD
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -67,25 +97,61 @@
             android:layout_below="@+id/llMessage"/>
 
     </FrameLayout>
+=======
+    </LinearLayout>
+
+>>>>>>> 69716ee198665972de37162c4c893b5b44d91784
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
+<<<<<<< HEAD
         android:layout_height="30dp"
         android:id="@+id/llMessage"
         android:layout_below="@+id/rlUserHeader"
+=======
+        android:layout_height="10dp"
+        android:layout_below="@+id/flContainer"
+>>>>>>> 69716ee198665972de37162c4c893b5b44d91784
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Near By Restaurants"
-            android:id="@+id/textView5"
-            android:textStyle="bold"
-            android:textColor="#FFA500"/>
     </LinearLayout>
 
 
+<<<<<<< HEAD
+=======
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/flContainer"
+        android:layout_below="@+id/textView5">
+
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:paddingLeft="10sp"
+        android:background="@drawable/txt_restaurants"
+        android:id="@+id/textView5"
+        android:textStyle="bold"
+        android:textColor="#0000FF"
+        android:layout_below="@+id/llCounts"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvBusinesses"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/flContainer" />
+>>>>>>> 69716ee198665972de37162c4c893b5b44d91784
 
 </RelativeLayout>
