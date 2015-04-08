@@ -9,10 +9,10 @@
 
     <TextView
         android:text="@string/not_lunch_msg"
-        android:textColor="#0000FF"
+        android:textColor="#fc313131"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
+        android:paddingLeft="28dp"
         android:id="@+id/tvNotlunchMsg"
         android:textSize="23sp"
         android:textStyle="bold"
