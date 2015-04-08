@@ -33,7 +33,7 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.6'
     // ActiveAndroid for simple persistence with an ORM
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
-    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    //compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.google.android.gms:play-services:6.5.+'
