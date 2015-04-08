@@ -144,7 +144,6 @@ public class ChatActivity extends Activity {
         query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
         groupIdNumber = (Integer) ParseUser.getCurrentUser().get("groupID");
         query.whereEqualTo("groupId", groupIdNumber);
-        Log.v("YAYAYAYAY", ParseUser.getCurrentUser().get("groupID").toString());
         query.orderByAscending("createdAt");
         // Execute query to fetch all messages from Parse asynchronously
         // This is equivalent to a SELECT query with SQL
