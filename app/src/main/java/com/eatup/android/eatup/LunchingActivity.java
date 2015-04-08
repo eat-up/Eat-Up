@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.parse.FunctionCallback;
+import com.parse.LogInCallback;
+import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -16,6 +20,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -23,14 +28,17 @@ import java.util.concurrent.TimeUnit;
 public class LunchingActivity extends ActionBarActivity {
     private TextView tvTimeCount;
     ParseUser currentUser;
+    ParseQuery<ParseObject> query;
 
-    public String partnerUID = "";
-    public String eatUpPartner = "";
-    public String profilePic;
-    public String industry;
+    private String partnerUID;
+    private String eatUpPartner;
+    private String profilePic;
+    private String industry;
 
-    public double averLat;
-    public double averLong;
+    private double averLat;
+    private double averLong;
+
+    private Boolean paired;
 
     private static BroadcastReceiver tickReceiver;
     private static final String FORMAT = "%02d:%02d:%02d";
@@ -42,7 +50,12 @@ public class LunchingActivity extends ActionBarActivity {
         initSettings();
         try {
             checkPartner();
+            paired = true;
+            currentUser.put("paired","yes");
+            currentUser.saveInBackground();
         } catch (ParseException e) {
+            Intent fallback = new Intent(getApplicationContext(),NotLunchTimeActivity.class);
+            startActivity(fallback);
             e.printStackTrace();
         }
         timeTick();
@@ -51,12 +64,14 @@ public class LunchingActivity extends ActionBarActivity {
     }
 
     private void checkPartner() throws ParseException {
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        query = ParseQuery.getQuery("_User");
         query.whereNear("location",(ParseGeoPoint)currentUser.get("location"));
         query.whereEqualTo("lunching", "yes");
+        query.whereEqualTo("paired","no");
+        query.setLimit(2);
 
-        partnerUID = query.find().get(1).get("username").toString();
+        //partnerUID = query.find().get(1).get("username").toString();
+        partnerUID = query.find().get(1).getObjectId();
         eatUpPartner = query.find().get(1).get("name").toString();
         profilePic = query.find().get(1).get("pictureUrl").toString();
         industry = query.find().get(1).get("industry").toString();
@@ -65,6 +80,23 @@ public class LunchingActivity extends ActionBarActivity {
                 query.find().get(1).getParseGeoPoint("location").getLatitude()) / 2;
         averLong = (query.find().get(0).getParseGeoPoint("location").getLongitude() +
                 query.find().get(1).getParseGeoPoint("location").getLongitude()) / 2;
+
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("username", partnerUID);
+        params.put("myusername", currentUser.getObjectId());
+        //params.put("paired", "no");
+        ParseCloud.callFunctionInBackground("getPaired", params, new FunctionCallback<Object>() {
+            public void done(Object someTalk, ParseException e) {
+                if (e == null) {
+                    Log.d("it's herererere", "when here success!!!!");
+                } else {
+                    Log.d ("it's hereher", e.toString());
+                }
+            }
+        });
+
+
 
     }
 
@@ -96,7 +128,8 @@ public class LunchingActivity extends ActionBarActivity {
 
             public void onFinish()
             {
-                if (currentUser.get("lunching").toString().equalsIgnoreCase("yes")) {
+                if (currentUser.get("lunching").toString().equalsIgnoreCase("yes") && paired) {
+                    paired = false;
                     Intent pairUp = new Intent(getApplicationContext(), MatchActivity.class);
                     Bundle b = new Bundle();
                     b.putString("partnerUID", partnerUID);
@@ -152,8 +185,24 @@ public class LunchingActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        paired = false;
         currentUser.put("lunching","no");
+        currentUser.put("paired", "no");
         currentUser.saveInBackground();
+        ParseUser.logInInBackground(partnerUID, "BOOM", new LogInCallback() {
+                    @Override
+                    public void done(ParseUser parseUser, ParseException e) {
+                        if (parseUser != null) {
+                            // Hooray! The user is logged in.
+                            parseUser.put("paired", "no");
+                            parseUser.saveInBackground();
+
+                        } else {
+                            // Signup failed. Look at the ParseException to see what happened.
+                        }
+                    }
+                }
+        );
         finish();
     }
 }

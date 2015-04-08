@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.0"
+  },
+  "applications": {
+    "EatUp": {
+      "applicationId": "hL9rXd1CIDxDnKT1i3RAQUpdN7Eze6OVsaz8y9ga",
+      "masterKey": "XYSMM88cM0r0PT4KePu0UcNAGHLPADfPt22H5duD"
+    },
+    "_default": {
+      "link": "EatUp"
+    }
+  }
+}

@@ -12,7 +12,6 @@
         android:id="@+id/lunching_msg"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_below="@+id/textView6"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="45dp" />
@@ -26,13 +25,6 @@
         android:layout_marginTop="52dp"
         android:layout_below="@+id/lunching_msg"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="11"
-        android:id="@+id/textView6"
-        android:layout_alignLeft="@+id/tvLunchTime" />
 
     <TextView
         android:layout_width="wrap_content"
