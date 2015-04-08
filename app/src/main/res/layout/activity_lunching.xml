@@ -12,7 +12,7 @@
         android:id="@+id/lunching_msg"
         android:textSize="26sp"
         android:paddingLeft="20dp"
-        android:textColor="#fc313131"
+        android:textColor="#505050"
         android:textStyle="bold"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

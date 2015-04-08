@@ -24,7 +24,7 @@
         android:text="@string/meetneat"
         android:id="@+id/tvMeetnEat"
         android:textStyle="bold"
-        android:textColor="#fc313131"
+        android:textColor="#505050"
         android:textSize="26dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"

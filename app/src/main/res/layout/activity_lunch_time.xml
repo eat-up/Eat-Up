@@ -51,7 +51,7 @@
         android:text="@string/select"
         android:id="@+id/tvSelect"
         android:textStyle="bold"
-        android:textColor="#fc313131"
+        android:textColor="#505050"
         android:textSize="24dp"
         android:layout_marginTop="26dp"
         android:layout_below="@+id/tvReadyToEat"
