@@ -10,15 +10,7 @@ Once paired, they are given restaurant choices and a chat box so that they can t
 After some time has passed, users can say whether their lunch date was a success, not a success, or a no show.
 
 
-
-[![Eat Up](http://img.youtube.com/watch?v=fzuzJ4EW0Fc/0.jpg)](https://www.youtube.com/watch?v=fzuzJ4EW0Fc)
-
-
-
-
-
-
-
+<a href="https://www.youtube.com/watch?v=fzuzJ4EW0Fc">Eat Up Video Demo</a>
 
 
 **Required User Stories:**
