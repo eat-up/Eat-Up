@@ -10,6 +10,17 @@ Once paired, they are given restaurant choices and a chat box so that they can t
 After some time has passed, users can say whether their lunch date was a success, not a success, or a no show.
 
 
+
+[![Eat Up](http://img.youtube.com/watch?v=fzuzJ4EW0Fc/0.jpg)](https://www.youtube.com/watch?v=fzuzJ4EW0Fc)
+
+
+
+
+
+
+
+
+
 **Required User Stories:**
  * [ ] Required: User can sign in using LinkedIn
  * [ ] Required: Users can edit preferences in the settings tab even when app is closed
