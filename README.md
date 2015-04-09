@@ -1,6 +1,6 @@
-# Eat Up
+# Eatup
 
-Eat Up is a way for people who want to eat lunch and meet new people at the same time. 
+Eatup is a way for people who want to eat lunch and meet new people at the same time. 
 It's a meetup to eat (hence, Eat Up).
 
 ##How It Works   
